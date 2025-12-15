@@ -1,0 +1,24 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.import.gradle.enabled": false,
+  "java.import.maven.enabled": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.signatureHelp.enabled": true,
+  "java.completion.enabled": true,
+  "java.format.enabled": true,
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": []
+  },
+  "java.configuration.maven.userSettings": null,
+  "maven.executable.preferMavenWrapper": true,
+  "maven.view": "hierarchical",
+  "maven.terminal.useJavaHome": true,
+  "java.dependency.packagePresentation": "hierarchical",
+  "java.eclipse.downloadSources": true,
+  "java.jdt.ls.vmargs": "-XX:+UseG1GC -XX:+UseStringDeduplication -Xmx1024m",
+  "redhat.telemetry.enabled": false,
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.debug.settings.onBuildFailureProceed": true
+}

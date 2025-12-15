@@ -1,0 +1,154 @@
+{
+  "sucesso": true,
+  "mensagem": "Autenticação bem-sucedida",
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInVzdWFyaW9JZCI6MSwiZW1haWwiOiJhZG1pbkBpbnN0aXR1aWNhby5jb20uYnIiLCJwZXJmaXMiOlsiUk9MRV9BRE1JTl9HRVJBTCJdLCJ0aXBvIjoiMSIsImlhdCI6MTc2NTM3NTgyNiwiZXhwIjoxNzY1NDYyMjI2fQ.RroEYI3zwC-7aXGx6zbYtzXvHyshm8LvPrC94CK564Y",
+  "refreshToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInVzdWFyaW9JZCI6MSwidGlwbyI6IlJFRlJFU0giLCJpYXQiOjE3NjUzNzU4MjYsImV4cCI6MTc2NTk4MDYyNn0.2ZobC5-Dmipf0nngO3rpUc8BHBBZEzsTrLBZMs0ZUTU",
+  "usuario": {
+    "id": 1,
+    "username": "admin",
+    "cpf": "12345678901234",
+    "nome": "Administrador Sistema",
+    "email": "admin@instituicao.com.br",
+    "matricula": "MAT001",
+    "status": "ATIVO",
+    "alterar": false,
+    "dataCadastro": "2025-12-10",
+    "dataUltimoLogin": "2025-12-10T14:10:26.938+00:00",
+    "perfis": [
+      {
+        "id": 1,
+        "nome": "ROLE_ADMIN_GERAL",
+        "descricao": "Administrador Geral do Sistema",
+        "status": "ATIVO",
+        "modulo": {
+          "id": 1,
+          "descricao": "Sistema de Administração Geral",
+          "emailResponsavel": "admin@instituicao.com.br",
+          "status": "ATIVO",
+          "dataCadastro": "2025-12-10T13:44:14.540+00:00"
+        }
+      }
+    ],
+    "unidades": [
+      {
+        "id": 3,
+        "sigla": "RH",
+        "descricao": "Departamento de Recursos Humanos",
+        "situacao": "ATIVO",
+        "numero": "3",
+        "email": "rh@instituicao.com.br",
+        "telefone": "(11) 3000-0003",
+        "endereco": "Avenida Principal, 1000",
+        "cep": "01310-100",
+        "bairro": "Centro",
+        "ordenacao": 3,
+        "unidadeSuperior": {
+          "id": 1,
+          "sigla": "PRESIDENCIA",
+          "descricao": "Presidência da Instituição",
+          "situacao": "ATIVO",
+          "numero": "1",
+          "email": "presidencia@instituicao.com.br",
+          "telefone": "(11) 3000-0001",
+          "endereco": "Avenida Principal, 1000",
+          "cep": "01310-100",
+          "bairro": "Centro",
+          "ordenacao": 1
+        }
+      },
+      {
+        "id": 2,
+        "sigla": "DIRETORIA",
+        "descricao": "Diretoria Geral",
+        "situacao": "ATIVO",
+        "numero": "2",
+        "email": "diretoria@instituicao.com.br",
+        "telefone": "(11) 3000-0002",
+        "endereco": "Avenida Principal, 1000",
+        "cep": "01310-100",
+        "bairro": "Centro",
+        "ordenacao": 2,
+        "unidadeSuperior": {
+          "id": 1,
+          "sigla": "PRESIDENCIA",
+          "descricao": "Presidência da Instituição",
+          "situacao": "ATIVO",
+          "numero": "1",
+          "email": "presidencia@instituicao.com.br",
+          "telefone": "(11) 3000-0001",
+          "endereco": "Avenida Principal, 1000",
+          "cep": "01310-100",
+          "bairro": "Centro",
+          "ordenacao": 1
+        }
+      },
+      {
+        "id": 5,
+        "sigla": "FINANCEIRO",
+        "descricao": "Departamento Financeiro",
+        "situacao": "ATIVO",
+        "numero": "5",
+        "email": "financeiro@instituicao.com.br",
+        "telefone": "(11) 3000-0005",
+        "endereco": "Avenida Principal, 1000",
+        "cep": "01310-100",
+        "bairro": "Centro",
+        "ordenacao": 5,
+        "unidadeSuperior": {
+          "id": 1,
+          "sigla": "PRESIDENCIA",
+          "descricao": "Presidência da Instituição",
+          "situacao": "ATIVO",
+          "numero": "1",
+          "email": "presidencia@instituicao.com.br",
+          "telefone": "(11) 3000-0001",
+          "endereco": "Avenida Principal, 1000",
+          "cep": "01310-100",
+          "bairro": "Centro",
+          "ordenacao": 1
+        }
+      },
+      {
+        "id": 4,
+        "sigla": "TI",
+        "descricao": "Departamento de Tecnologia da Informação",
+        "situacao": "ATIVO",
+        "numero": "4",
+        "email": "ti@instituicao.com.br",
+        "telefone": "(11) 3000-0004",
+        "endereco": "Avenida Principal, 1000",
+        "cep": "01310-100",
+        "bairro": "Centro",
+        "ordenacao": 4,
+        "unidadeSuperior": {
+          "id": 1,
+          "sigla": "PRESIDENCIA",
+          "descricao": "Presidência da Instituição",
+          "situacao": "ATIVO",
+          "numero": "1",
+          "email": "presidencia@instituicao.com.br",
+          "telefone": "(11) 3000-0001",
+          "endereco": "Avenida Principal, 1000",
+          "cep": "01310-100",
+          "bairro": "Centro",
+          "ordenacao": 1
+        }
+      },
+      {
+        "id": 1,
+        "sigla": "PRESIDENCIA",
+        "descricao": "Presidência da Instituição",
+        "situacao": "ATIVO",
+        "numero": "1",
+        "email": "presidencia@instituicao.com.br",
+        "telefone": "(11) 3000-0001",
+        "endereco": "Avenida Principal, 1000",
+        "cep": "01310-100",
+        "bairro": "Centro",
+        "ordenacao": 1
+      }
+    ]
+  },
+  "expiresIn": 86396,
+  "expiresAt": "2025-12-11T14:10:26.000+00:00"
+}
