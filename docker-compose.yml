@@ -56,6 +56,7 @@ services:
     container_name: auth-service
     environment:
       #SPRING_PROFILES_ACTIVE: dev
+      DATASOURCE_USE_ENV_VARS: 'true'
       DATABASE_URL: jdbc:postgresql://postgres:5432/auth_db_dev
       DATABASE_USER: postgres
       DATABASE_PASSWORD: postgres

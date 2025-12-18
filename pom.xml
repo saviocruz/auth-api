@@ -54,6 +54,19 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
+		    <!-- AWS Secrets Manager SDK -->
+    <dependency>
+        <groupId>software.amazon.awssdk</groupId>
+        <artifactId>secretsmanager</artifactId>
+        <version>2.20.26</version>
+    </dependency>
+
+ <!-- JSON processing -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+    </dependency>
+		
 		<!-- Database -->
 		<dependency>
 			<groupId>org.postgresql</groupId>

@@ -1,0 +1,20 @@
+flowchart TD
+    A["Spring Boot Startup"] --> B{Check DATASOURCE_USE_ENV_VARS}
+    
+    B -->|true| C["LocalDataSourceConfig"]
+    B -->|false/default| D["DataSourceConfig"]
+    
+    C --> E["Load from Environment"]
+    E --> F["HikariCP Connection Pool"]
+    F --> G["PostgreSQL Local"]
+    
+    D --> H["AWS SDK"]
+    H --> I["AWS Secrets Manager"]
+    I --> J["Fetch Credentials"]
+    J --> K["HikariCP Connection Pool"]
+    K --> L["Aurora RDS"]
+    
+    style C fill:#90EE90
+    style D fill:#87CEEB
+    style G fill:#FFB6C1
+    style L fill:#FFB6C1
