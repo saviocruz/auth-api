@@ -161,7 +161,7 @@ CREATE INDEX idx_usuario_unidade_unidade ON auth.usuario_unidade(id_unidade);
 CREATE TABLE auth.usuario_historico (
     id BIGSERIAL PRIMARY KEY,
     id_usuario BIGINT NOT NULL REFERENCES auth.usuario(id) ON DELETE RESTRICT,
-    tipo_evento VARCHAR(20), NOT NULL,
+    tipo_evento auth.tipo_evento_enum NOT NULL,
     descricao VARCHAR(500),
     data_sistema TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     modulo VARCHAR(100),
