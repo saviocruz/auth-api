@@ -124,7 +124,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 		}
 
 		// Validar senha
-		//String s = passwordEncoder.encode("admin123");
+		String s = passwordEncoder.encode("admin123");
+		System.out.println(s);
 		if (!passwordEncoder.matches(password, userDetails.getPassword())) {
 			logger.warn("Senha inválida para usuário: {}", username);
 			incrementarTentativasFalhas(userDetails);
