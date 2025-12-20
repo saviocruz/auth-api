@@ -14,21 +14,28 @@ CREATE SCHEMA IF NOT EXISTS auth;
 -- ============================================================================
 -- 2. ENUM TYPES (PostgreSQL)
 -- ============================================================================
-CREATE TYPE auth.ativo_inativo_enum AS ENUM ('ATIVO', 'INATIVO', 'BLOQUEADO');
-CREATE TYPE auth.tipo_evento_enum AS ENUM (
-    'LOGIN_SUCESSO',
-    'LOGIN_FALHA',
-    'CRIACAO',
-    'EDICAO',
-    'DELECAO',
-    'BLOQUEIO',
-    'DESBLOQUEIO',
-    'ALTERACAO_SENHA',
-    'RESET_SENHA',
-    'ALTERACAO_PERFIS',
-    'ALTERACAO_UNIDADES',
-    'LOGOUT'
-);
+DO $$ BEGIN
+    CREATE TYPE auth.ativo_inativo_enum AS ENUM ('ATIVO', 'INATIVO', 'BLOQUEADO');
+EXCEPTION WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE auth.tipo_evento_enum AS ENUM (
+        'LOGIN_SUCESSO',
+        'LOGIN_FALHA',
+        'CRIACAO',
+        'EDICAO',
+        'DELECAO',
+        'BLOQUEIO',
+        'DESBLOQUEIO',
+        'ALTERACAO_SENHA',
+        'RESET_SENHA',
+        'ALTERACAO_PERFIS',
+        'ALTERACAO_UNIDADES',
+        'LOGOUT'
+    );
+EXCEPTION WHEN duplicate_object THEN null;
+END $$;
 
 -- ============================================================================
 -- 3. TABLE: UNIDADE (Organizational Units with Hierarchy)
