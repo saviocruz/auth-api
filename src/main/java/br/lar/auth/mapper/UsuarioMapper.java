@@ -9,7 +9,7 @@ import br.lar.auth.model.Usuario;
 /**
  * MapStruct Mapper para converter entre Usuario e UsuarioDTO
  */
-@Mapper(componentModel = "spring")
+@Mapper(uses = PerfilMapper.class, componentModel = "spring")
 public interface UsuarioMapper {
 
 	/**
@@ -21,5 +21,6 @@ public interface UsuarioMapper {
 	 * Converter de UsuarioDTO para Usuario
 	 */
 	@Mapping(target = "chave", ignore = true)
+	@Mapping(target = "tentativasFalhas", ignore = true)
 	Usuario toEntity(UsuarioDTO usuarioDTO);
 }

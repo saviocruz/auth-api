@@ -29,6 +29,9 @@ public class Modulo implements Serializable {
 	@Column(name = "id", unique = true, nullable = false)
 	private Long id;
 
+	@Column(name = "nome", nullable = false, length = 100)
+	private String nome;
+
 	@Column(name = "email_responsavel", length = 100)
 	private String emailResponsavel;
 

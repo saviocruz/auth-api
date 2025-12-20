@@ -1,6 +1,7 @@
 package br.lar.auth.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import br.lar.auth.dto.PerfilDTO;
 import br.lar.auth.model.Perfil;
@@ -11,6 +12,7 @@ import br.lar.auth.model.Perfil;
 @Mapper(uses = ModuloMapper.class, componentModel = "spring")
 public interface PerfilMapper {
 
+	@Mapping(target = "funcionalidades", ignore = true)
 	PerfilDTO toDTO(Perfil perfil);
 
 	Perfil toEntity(PerfilDTO perfilDTO);
