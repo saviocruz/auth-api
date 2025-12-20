@@ -141,35 +141,35 @@ INSERT INTO auth.usuario (username, cpf, nome, email, chave, matricula, status, 
 VALUES
     -- Admin user (senha: admin123 -> BCrypt)
     ('admin', '12345678901234', 'Administrador Sistema', 'admin@instituicao.com.br',
-     '$2a$10$6KVhDcd2dYPs3fTz3lamC.meKclmBO395suPexcGEVBZl4SKT8C9a', 'MAT001', 'ATIVO', FALSE),
+     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36gBS/Oz', 'MAT001', 'ATIVO', FALSE),
 
     -- RH Manager (senha: rh123)
     ('rh_manager', '98765432101234', 'Gerente RH', 'rh.manager@instituicao.com.br',
-     '$2a$10$6KVhDcd2dYPs3fTz3lamC.meKclmBO395suPexcGEVBZl4SKT8C9a', 'MAT002', 'ATIVO', FALSE),
+     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36gBS/Oz', 'MAT002', 'ATIVO', FALSE),
 
     -- RH Consultant (senha: usuario123)
     ('rh_consultant', '11122233344455', 'Consultor RH', 'rh.consultant@instituicao.com.br',
-     '$2a$10$6KVhDcd2dYPs3fTz3lamC.meKclmBO395suPexcGEVBZl4SKT8C9a', 'MAT003', 'ATIVO', FALSE),
+     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36gBS/Oz', 'MAT003', 'ATIVO', FALSE),
 
     -- Finance Manager (senha: financeiro123)
     ('finance_manager', '55566677788899', 'Gerente Financeiro', 'finance.manager@instituicao.com.br',
-     '$2a$10$6KVhDcd2dYPs3fTz3lamC.meKclmBO395suPexcGEVBZl4SKT8C9a', 'MAT004', 'ATIVO', FALSE),
+     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36gBS/Oz', 'MAT004', 'ATIVO', FALSE),
 
     -- Finance Analyst (senha: usuario123)
     ('finance_analyst', '99988877766655', 'Analista Financeiro', 'finance.analyst@instituicao.com.br',
-     '$2a$10$6KVhDcd2dYPs3fTz3lamC.meKclmBO395suPexcGEVBZl4SKT8C9a', 'MAT005', 'ATIVO', FALSE),
+     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36gBS/Oz', 'MAT005', 'ATIVO', FALSE),
 
     -- Regular user (senha: usuario123)
     ('usuario', '44433322211100', 'Usuário Comum', 'usuario@instituicao.com.br',
-     '$2a$10$6KVhDcd2dYPs3fTz3lamC.meKclmBO395suPexcGEVBZl4SKT8C9a', 'MAT006', 'ATIVO', FALSE),
+     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36gBS/Oz', 'MAT006', 'ATIVO', FALSE),
 
     -- Inactive user (senha: usuario123)
     ('usuario_inativo', '77788899900011', 'Usuário Inativo', 'usuario.inativo@instituicao.com.br',
-     '$2a$10$6KVhDcd2dYPs3fTz3lamC.meKclmBO395suPexcGEVBZl4SKT8C9a', 'MAT007', 'INATIVO', FALSE),
+     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36gBS/Oz', 'MAT007', 'INATIVO', FALSE),
 
     -- Blocked user (senha: usuario123)
     ('usuario_bloqueado', '22233344455566', 'Usuário Bloqueado', 'usuario.bloqueado@instituicao.com.br',
-     '$2a$10$6KVhDcd2dYPs3fTz3lamC.meKclmBO395suPexcGEVBZl4SKT8C9a', 'MAT008', 'BLOQUEADO', TRUE);
+     '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36gBS/Oz', 'MAT008', 'BLOQUEADO', TRUE);
 
 -- ============================================================================
 -- 7. ASSOCIATE: USUARIOS com PERFIS
