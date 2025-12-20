@@ -39,8 +39,7 @@ public class UserDetailsServiceImpl implements CustomUserDetailsService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	@Autowired
-	private PerfilRepository perfilRepository;
+ 
 
 	@Autowired
 	private ModuloRepository moduloRepository;
