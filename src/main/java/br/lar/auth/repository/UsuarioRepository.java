@@ -52,11 +52,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	boolean existsByCpf(String cpf);
 
 	/**
-	 * Buscar usuários com paginação
-	 */
-	Page<Usuario> findAll(Pageable pageable);
-
-	/**
 	 * Buscar usuários por status com paginação
 	 */
 	Page<Usuario> findByStatus(AtivoInativo status, Pageable pageable);
@@ -72,8 +67,14 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	@Query("SELECT u FROM Usuario u WHERE " +
 		   "LOWER(u.username) LIKE LOWER(CONCAT('%', :busca, '%')) OR " +
 		   "LOWER(u.nome) LIKE LOWER(CONCAT('%', :busca, '%')) OR " +
-		   "u.cpf = :busca")
+		   "u.cpf = :busca ORDER BY u.nome")
 	Page<Usuario> buscarPorUsernameOuNomeOuCpf(@Param("busca") String busca, Pageable pageable);
+
+	/**
+	 * Buscar usuários com paginação
+	 */
+	@Query("SELECT u FROM Usuario u ORDER BY u.nome")
+	Page<Usuario>  findAllOrderByNome(Pageable pageable);
 
 	/**
 	 * Busca por módulo (via USUARIO_PERFIL)

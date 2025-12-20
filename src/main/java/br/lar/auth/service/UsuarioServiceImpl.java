@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.lar.auth.dto.PerfilDTO;
 import br.lar.auth.dto.UsuarioDTO;
 import br.lar.auth.mapper.PerfilMapper;
 import br.lar.auth.mapper.UnidadeMapper;
@@ -89,7 +90,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 			usuarios = usuarioRepository.findByStatus(AtivoInativo.fromString(status), pageable);
 		} else {
 			// Listar todos
-			usuarios = usuarioRepository.findAll(pageable);
+			usuarios = usuarioRepository.findAllOrderByNome(pageable);
 		}
 
 		return usuarios.map(usuarioMapper::toDTO);
@@ -167,10 +168,31 @@ public class UsuarioServiceImpl implements UsuarioService {
 			throw new RuntimeException("Email já cadastrado: " + usuarioDTO.getEmail());
 		}
 
-		// Atualizar campos
+		// Atualizar campos básicos
 		usuario.setNome(usuarioDTO.getNome());
 		usuario.setEmail(usuarioDTO.getEmail());
 		usuario.setMatricula(usuarioDTO.getMatricula());
+
+		// Atualizar perfis se fornecidos no DTO
+		if (usuarioDTO.getPerfis() != null && !usuarioDTO.getPerfis().isEmpty()) {
+			Set<Perfil> perfis = new HashSet<>();
+			for (PerfilDTO perfilDTO : usuarioDTO.getPerfis()) {
+				if (perfilDTO.getId() != null) {
+					Perfil perfil = perfilRepository.findById(perfilDTO.getId())
+						.orElseThrow(() -> {
+							logger.error("Perfil não encontrado: {}", perfilDTO.getId());
+							return new RuntimeException("Perfil não encontrado: " + perfilDTO.getId());
+						});
+					perfis.add(perfil);
+				}
+			}
+			usuario.setPerfis(perfis);
+			logger.info("Perfis atualizados para usuário: {} - Total: {}", usuarioId, perfis.size());
+		} else if (usuarioDTO.getPerfis() != null && usuarioDTO.getPerfis().isEmpty()) {
+			// Se a lista de perfis está vazia, remover todos os perfis
+			usuario.setPerfis(new HashSet<>());
+			logger.info("Todos os perfis removidos do usuário: {}", usuarioId);
+		}
 
 		Usuario usuarioAtualizado = usuarioRepository.save(usuario);
 
