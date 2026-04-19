@@ -1,0 +1,101 @@
+spring:
+  application:
+    name: auth-service-prod
+
+  datasource:
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        '[format_sql]': false
+        jdbc:
+          '[batch_size]': 30
+          '[fetch_size]': 50
+        '[order_inserts]': true
+        '[order_updates]': true
+        '[generate_statistics]': false
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    validate-on-migrate: true
+    out-of-order: false
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD}
+      timeout: 60000ms
+      ssl:
+        enabled: ${REDIS_SSL:false}
+      lettuce:
+        pool:
+          max-active: 16
+          max-idle: 8
+          min-idle: 4
+
+  jackson:
+    default-property-inclusion: non_null
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+ 
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION:86400000}
+  refresh:
+    expiration: ${JWT_REFRESH_EXPIRATION:604800000}
+
+logging:
+  level:
+    root: WARN
+    '[br.lar.auth]': INFO
+    '[org.springframework.security]': WARN
+    '[org.hibernate]': WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: /var/log/auth-service/application.log
+    max-size: 10MB
+    max-history: 30
+
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: false

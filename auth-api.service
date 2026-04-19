@@ -1,0 +1,16 @@
+[Unit]
+Description=Backend Java Spring Boot Application
+After=syslog.target network.target
+
+[Service]
+User=ec2-user
+Group=root
+ExecStart=/usr/bin/java -jar /app/auth-service-1.0.0.jar
+SuccessExitStatus=143
+WorkingDirectory=/app
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+

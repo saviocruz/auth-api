@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: auth-service-test
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        '[format_sql]': true
+
+  flyway:
+    enabled: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 60000ms
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+jwt:
+  secret: test-secret-key-change-in-production-must-be-at-least-256-bits-long
+  expiration: 86400000
+  refresh:
+    expiration: 604800000
+
+logging:
+  level:
+    root: WARN
+    '[br.lar.auth]': INFO
+    '[org.springframework.security]': WARN
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+springdoc:
+  swagger-ui:
+    enabled: false
