@@ -3,28 +3,27 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
-	<groupId>br.lar.auth</groupId>
+	<groupId>br.local.auth</groupId>
 	<artifactId>auth-service</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-
+ 
 	<name>Auth Service - User Authentication System</name>
 	<description>Sistema de Autenticação com 3 Tipos de Login</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.5.12</version>
+		<version>3.5.13</version>
 		<relativePath />
 	</parent>
 
 	<properties>
 		<java.version>21</java.version>
-		<spring-cloud.version>2023.0.0</spring-cloud.version>
 		<jjwt.version>0.11.5</jjwt.version>
 		<mapstruct.version>1.5.5.Final</mapstruct.version>
 		<springdoc-openapi.version>2.3.0</springdoc-openapi.version>
+    <springdoc.version>2.8.6</springdoc.version>		
 	</properties>
 
 	<dependencies>
@@ -127,17 +126,10 @@
 
 		<!-- SpringDoc OpenAPI (Swagger) -->
 		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>${springdoc-openapi.version}</version>
+				<groupId>org.springdoc</groupId>
+				<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+				<version>${springdoc.version}</version>
 		</dependency>
-
-		<!-- Spring Cloud Config (optional) -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
-
  
 		<!-- Testing -->
 		<dependency>
@@ -155,30 +147,17 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>testcontainers</artifactId>
-			<version>1.19.7</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>1.19.7</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
+	 
 	<build>
 		<plugins>
 			<plugin>

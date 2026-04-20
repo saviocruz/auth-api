@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * - JWT para stateless authentication
  */
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "br.lar.auth.repository")
+@EnableJpaRepositories(basePackages = "br.local.auth.repository")
 public class AuthServiceApplication {
 
 	public static void main(String[] args) {

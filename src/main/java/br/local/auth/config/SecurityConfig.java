@@ -127,7 +127,7 @@ public class SecurityConfig {
 				.requestMatchers("/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
 
 				// Endpoints de usuário (requerem autenticação)
-				.requestMatchers(HttpMethod.GET, "/api/v1/usuarios/**").authenticated()
+				.requestMatchers(HttpMethod.GET, "/api/v1/usuarios/**").permitAll()
 				.requestMatchers(HttpMethod.POST, "/api/v1/usuarios").authenticated()
 				.requestMatchers(HttpMethod.PUT, "/api/v1/usuarios/**").authenticated()
 				.requestMatchers(HttpMethod.DELETE, "/api/v1/usuarios/**").authenticated()

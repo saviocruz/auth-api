@@ -1,10 +1,4 @@
 spring:
-  cloud:
-    config:
-      enabled: false
-    compatibility-verifier:
-      enabled: false
-
   application:
     name: auth-service
 
@@ -44,6 +38,8 @@ spring:
           max-active: 8
           max-idle: 8
           min-idle: 0
+      repositories:
+        enabled: false
 
   jackson:
     serialization:

@@ -39,8 +39,6 @@ public class UserDetailsServiceImpl implements CustomUserDetailsService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
- 
-
 	@Autowired
 	private ModuloRepository moduloRepository;
 
@@ -157,6 +155,9 @@ public class UserDetailsServiceImpl implements CustomUserDetailsService {
 		}
 
 		// Validar password
+		String s = passwordEncoder.encode("admin123");
+		System.out.println(s);
+		System.out.println(usuario.getChave());
 		if (password != null && !passwordEncoder.matches(password, usuario.getChave())) {
 			logger.warn("Senha inválida para usuário: {}", username);
 			throw new UsernameNotFoundException("Credenciais inválidas");

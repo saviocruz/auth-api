@@ -44,7 +44,7 @@ public class PerfilController {
      * Listar todos os perfis ativos
      */
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN_GERAL') or hasAuthority('GESTOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('GESTOR')")
     public ResponseEntity<List<PerfilDTO>> listarPerfis() {
         logger.info("Listando todos os perfis ativos");
 
@@ -62,7 +62,7 @@ public class PerfilController {
      * Listar perfis por módulo
      */
     @GetMapping("/modulo/{moduloId}")
-    @PreAuthorize("hasAuthority('ADMIN_GERAL') or hasAuthority('GESTOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('GESTOR_IMPLANTACAO')")
     public ResponseEntity<List<PerfilDTO>> listarPerfisPorModulo(@NotNull @PathVariable Long moduloId) {
         logger.info("Listando perfis do módulo: {}", moduloId);
 
@@ -80,7 +80,7 @@ public class PerfilController {
      * Buscar perfis por nome
      */
     @GetMapping("/search")
-    @PreAuthorize("hasAuthority('ADMIN_GERAL') or hasAuthority('GESTOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('GESTOR_IMPLANTACAO')")
     public ResponseEntity<List<PerfilDTO>> buscarPerfis(@RequestParam(required = false) String nome) {
         logger.info("Buscando perfis com nome: {}", nome);
 
@@ -103,7 +103,7 @@ public class PerfilController {
      * Obter perfil por ID
      */
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN_GERAL') or hasAuthority('GESTOR')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR') or hasAuthority('GESTOR_IMPLANTACAO')")
     public ResponseEntity<PerfilDTO> obterPerfil(@PathVariable Long id) {
         logger.info("Obtendo perfil: {}", id);
 
@@ -125,7 +125,7 @@ public class PerfilController {
      * Criar novo perfil
      */
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN_GERAL')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public ResponseEntity<PerfilDTO> criarPerfil(@Valid @RequestBody PerfilDTO perfilDTO) {
         logger.info("Criando novo perfil: {}", perfilDTO.getNome());
 
@@ -147,7 +147,7 @@ public class PerfilController {
      * Atualizar perfil
      */
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN_GERAL')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public ResponseEntity<PerfilDTO> atualizarPerfil(
             @PathVariable Long id,
             @Valid @RequestBody PerfilDTO perfilDTO) {
@@ -174,7 +174,7 @@ public class PerfilController {
      * Deletar perfil (soft delete)
      */
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN_GERAL')")
+    @PreAuthorize("hasAuthority('ADMINISTRADOR')")
     public ResponseEntity<Void> deletarPerfil(@PathVariable Long id) {
         logger.info("Deletando perfil: {}", id);
 

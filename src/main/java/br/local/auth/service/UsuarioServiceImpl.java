@@ -172,6 +172,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		usuario.setNome(usuarioDTO.getNome());
 		usuario.setEmail(usuarioDTO.getEmail());
 		usuario.setMatricula(usuarioDTO.getMatricula());
+		usuario.setUsername(usuarioDTO.getUsername());
 
 		// Atualizar perfis se fornecidos no DTO
 		if (usuarioDTO.getPerfis() != null && !usuarioDTO.getPerfis().isEmpty()) {

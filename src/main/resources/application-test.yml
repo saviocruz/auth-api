@@ -25,6 +25,8 @@ spring:
       host: localhost
       port: 6379
       timeout: 60000ms
+      repositories:
+        enabled: false
 
   h2:
     console:

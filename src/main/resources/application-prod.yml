@@ -47,6 +47,8 @@ spring:
           max-active: 16
           max-idle: 8
           min-idle: 4
+      repositories:
+        enabled: false
 
   jackson:
     default-property-inclusion: non_null
@@ -69,11 +71,11 @@ management:
   endpoint:
     health:
       show-details: when-authorized
- 
   prometheus:
     metrics:
       export:
         enabled: true
+
 jwt:
   secret: ${JWT_SECRET}
   expiration: ${JWT_EXPIRATION:86400000}

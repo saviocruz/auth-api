@@ -1,10 +1,4 @@
 spring:
-  cloud:
-    config:
-      enabled: false
-    compatibility-verifier:
-      enabled: false
-
   application:
     name: auth-service
 
@@ -25,7 +19,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: ${DDL_AUTO:none}
-    show-sql: ${SHOW_SQL:false}
+    show-sql: ${SHOW_SQL:true}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
@@ -44,6 +38,8 @@ spring:
           max-active: 8
           max-idle: 8
           min-idle: 0
+      repositories:
+        enabled: false
 
   jackson:
     serialization:
@@ -51,7 +47,7 @@ spring:
     default-property-inclusion: non_null
 
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT:8089}
   servlet:
     context-path: /
 
@@ -79,8 +75,10 @@ logging:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
 
 springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-    enabled: true
   api-docs:
-    path: /v3/api-docs
+    enabled: true
+    path: /v3/api-docs       # path padrão — troque se quiser outro
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+  show-actuator: true

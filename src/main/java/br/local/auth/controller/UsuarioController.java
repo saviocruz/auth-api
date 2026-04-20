@@ -60,7 +60,7 @@ public class UsuarioController {
 	 * - busca: Filtro por username/nome/cpf/email
 	 */
 	@GetMapping
-	@PreAuthorize("hasAuthority('ADMIN_GERAL')")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 	public ResponseEntity<Page<UsuarioDTO>> listarUsuarios(
 			Pageable pageable,
 			@RequestParam(required = false) String status,
@@ -81,7 +81,7 @@ public class UsuarioController {
 	 * Obter detalhes de um usuário específico
 	 */
 	@GetMapping("/{id}")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL') or @securityService.isCurrentUser(#id)")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR') or @securityService.isCurrentUser(#id)")
 	public ResponseEntity<UsuarioDTO> obterUsuario(@PathVariable Long id) {
 		logger.info("Obtendo usuário: {}", id);
 
@@ -103,7 +103,7 @@ public class UsuarioController {
 	 * Criar novo usuário
 	 */
 	@PostMapping
-	@PreAuthorize("hasAuthority('ADMIN_GERAL')")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 	public ResponseEntity<UsuarioDTO> criarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO) {
 		logger.info("Criando novo usuário: {}", usuarioDTO.getUsername());
 
@@ -125,7 +125,7 @@ public class UsuarioController {
 	 * Atualizar dados de um usuário
 	 */
 	@PutMapping("/{id}")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL') or @securityService.isCurrentUser(#id)")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR') or @securityService.isCurrentUser(#id)")
 	public ResponseEntity<UsuarioDTO> atualizarUsuario(
 			@PathVariable Long id,
 			@Valid @RequestBody UsuarioDTO usuarioDTO) {
@@ -149,7 +149,7 @@ public class UsuarioController {
 	 * Deletar um usuário (soft delete)
 	 */
 	@DeleteMapping("/{id}")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL')")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 	public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {
 		logger.info("Deletando usuário: {}", id);
 
@@ -171,7 +171,7 @@ public class UsuarioController {
 	 * Alterar perfis (roles) de um usuário
 	 */
 	@PutMapping("/{id}/perfis")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL')")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 	public ResponseEntity<UsuarioDTO> alterarPerfis(
 			@PathVariable Long id,
 			@RequestBody List<Long> perfilIds) {
@@ -195,7 +195,7 @@ public class UsuarioController {
 	 * Alterar unidades de um usuário
 	 */
 	@PutMapping("/{id}/unidades")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL')")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 	public ResponseEntity<UsuarioDTO> alterarUnidades(
 			@PathVariable Long id,
 			@RequestBody List<Long> unidadeIds) {
@@ -219,7 +219,7 @@ public class UsuarioController {
 	 * Bloquear um usuário
 	 */
 	@PutMapping("/{id}/bloquear")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL')")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 	public ResponseEntity<UsuarioDTO> bloquearUsuario(@PathVariable Long id) {
 		logger.info("Bloqueando usuário: {}", id);
 
@@ -241,7 +241,7 @@ public class UsuarioController {
 	 * Desbloquear um usuário
 	 */
 	@PutMapping("/{id}/desbloquear")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL')")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR')")
 	public ResponseEntity<UsuarioDTO> desbloquearUsuario(@PathVariable Long id) {
 		logger.info("Desbloqueando usuário: {}", id);
 
@@ -263,7 +263,7 @@ public class UsuarioController {
 	 * Alterar senha de um usuário
 	 */
 	@PutMapping("/{id}/alterar-senha")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL') or @securityService.isCurrentUser(#id)")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR') or @securityService.isCurrentUser(#id)")
 	public ResponseEntity<?> alterarSenha(
 			@PathVariable Long id,
 			@RequestBody java.util.Map<String, String> request) {
@@ -309,7 +309,7 @@ public class UsuarioController {
 	 * Obter histórico de logins de um usuário
 	 */
 	@GetMapping("/{id}/historico-logins")
-	@PreAuthorize("hasAuthority('ADMIN_GERAL') or @securityService.isCurrentUser(#id)")
+	@PreAuthorize("hasAuthority('ADMINISTRADOR') or @securityService.isCurrentUser(#id)")
 	public ResponseEntity<?> obterHistoricoLogins(
 			@PathVariable Long id,
 			@RequestParam(defaultValue = "10") int limite) {
