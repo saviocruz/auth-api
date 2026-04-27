@@ -77,8 +77,16 @@ logging:
 springdoc:
   api-docs:
     enabled: true
-    path: /v3/api-docs       # path padrão — troque se quiser outro
+    path: /v3/api-docs
   swagger-ui:
     enabled: true
     path: /swagger-ui.html
   show-actuator: true
+
+cors:
+  allowed-origins: ${CORS_ALLOWED_ORIGINS:"http://localhost:3000,http://localhost:4200"}
+  allowed-methods: ${CORS_ALLOWED_METHODS:"GET,POST,PUT,DELETE,PATCH,OPTIONS"}
+  allowed-headers: ${CORS_ALLOWED_HEADERS:"Authorization,Content-Type,Accept,X-Requested-With,Origin,Access-Control-Request-Method,Access-Control-Request-Headers"}
+  exposed-headers: ${CORS_EXPOSED_HEADERS:"Authorization,X-CSRF-TOKEN,Set-Cookie"}
+  allow-credentials: ${CORS_ALLOW_CREDENTIALS:true}
+  max-age: ${CORS_MAX_AGE:3600}

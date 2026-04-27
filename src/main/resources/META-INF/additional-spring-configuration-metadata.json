@@ -1,15 +1,49 @@
-{"properties": [{
-  "name": "jwt.refresh.expiration",
-  "type": "java.lang.String",
-  "description": "A description for 'jwt.refresh.expiration'"
-},
 {
-  "name": "jwt.expiration",
-  "type": "java.lang.String",
-  "description": "A description for 'jwt.expiration'"
-},
-{
-  "name": "jwt.secret",
-  "type": "java.lang.String",
-  "description": "A description for 'jwt.secret'"
-}]}
+  "properties": [
+    {
+      "name": "jwt.refresh.expiration",
+      "type": "java.lang.String",
+      "description": "A description for 'jwt.refresh.expiration'"
+    },
+    {
+      "name": "jwt.expiration",
+      "type": "java.lang.String",
+      "description": "A description for 'jwt.expiration'"
+    },
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "A description for 'jwt.secret'"
+    },
+    {
+      "name": "cors.allowed-origins",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Origens permitidas para CORS (separadas por vírgula via env var)."
+    },
+    {
+      "name": "cors.allowed-methods",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Métodos HTTP permitidos para CORS."
+    },
+    {
+      "name": "cors.allowed-headers",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Headers permitidos nas requisições CORS."
+    },
+    {
+      "name": "cors.exposed-headers",
+      "type": "java.util.List<java.lang.String>",
+      "description": "Headers expostos na resposta CORS."
+    },
+    {
+      "name": "cors.allow-credentials",
+      "type": "java.lang.Boolean",
+      "description": "Permite envio de cookies e headers de autenticação cross-origin."
+    },
+    {
+      "name": "cors.max-age",
+      "type": "java.lang.Long",
+      "description": "Tempo em segundos para cache do preflight CORS."
+    }
+  ]
+}

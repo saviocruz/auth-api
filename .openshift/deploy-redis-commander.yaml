@@ -1,0 +1,93 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sec-redis-commander
+  namespace: microservicos-hml
+  labels:
+    app: redis-commander
+    ambiente: homologa
+stringData:
+  REDIS_HOSTS: "default:auth-redis:6379"
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: redis-commander
+  namespace: microservicos-hml
+  labels:
+    app: redis-commander
+    ambiente: homologa
+    app.kubernetes.io/part-of: sgis
+spec:
+  selector:
+    matchLabels:
+      app: redis-commander
+  template:
+    metadata:
+      labels:
+        app: redis-commander
+        ambiente: homologa
+    spec:
+      containers:
+        - name: redis-commander
+          image: rediscommander/redis-commander:latest
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: sec-redis-commander
+          resources:
+            limits:
+              memory: 256Mi
+            requests:
+              memory: 64Mi
+          imagePullPolicy: Always
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+      nodeSelector:
+        env: qadev
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-redis-commander
+  namespace: microservicos-hml
+  labels:
+    app: redis-commander
+spec:
+  selector:
+    app: redis-commander
+  ports:
+    - port: 8081
+      name: http
+
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: redis-commander-hml
+  namespace: microservicos-hml
+  labels:
+    app: redis-commander
+spec:
+  host: redis-commander-hml.apps.ocp.tre-mt.jus.br
+  to:
+    kind: Service
+    name: svc-redis-commander
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+  wildcardPolicy: None

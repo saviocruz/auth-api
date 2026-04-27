@@ -1,0 +1,117 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: sec-pgadmin
+  namespace: microservicos-hml
+  labels:
+    app: pgadmin
+    ambiente: homologa
+stringData:
+  PGADMIN_DEFAULT_EMAIL: admin@instituicao.com.br
+  PGADMIN_DEFAULT_PASSWORD: admin
+  PGADMIN_CONFIG_SERVER_MODE: "False"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-pgadmin
+  namespace: microservicos-hml
+  labels:
+    app: pgadmin
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: pgadmin
+  namespace: microservicos-hml
+  labels:
+    app: pgadmin
+    ambiente: homologa
+    app.kubernetes.io/part-of: sgis
+spec:
+  selector:
+    matchLabels:
+      app: pgadmin
+  template:
+    metadata:
+      labels:
+        app: pgadmin
+        ambiente: homologa
+    spec:
+      containers:
+        - name: pgadmin
+          image: dpage/pgadmin4:latest
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: sec-pgadmin
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              memory: 128Mi
+          imagePullPolicy: Always
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            - name: pgadmin-data
+              mountPath: /var/lib/pgadmin
+      volumes:
+        - name: pgadmin-data
+          persistentVolumeClaim:
+            claimName: pvc-pgadmin
+      nodeSelector:
+        env: qadev
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-pgadmin
+  namespace: microservicos-hml
+  labels:
+    app: pgadmin
+spec:
+  selector:
+    app: pgadmin
+  ports:
+    - port: 80
+      name: http
+
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: pgadmin-hml
+  namespace: microservicos-hml
+  labels:
+    app: pgadmin
+spec:
+  host: pgadmin-hml.apps.ocp.tre-mt.jus.br
+  to:
+    kind: Service
+    name: svc-pgadmin
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+  wildcardPolicy: None
